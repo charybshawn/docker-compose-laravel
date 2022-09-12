@@ -5,7 +5,6 @@ networks:
     external: false
   traefik:
     external: true
-    driver: host
 
 services:
   site:
