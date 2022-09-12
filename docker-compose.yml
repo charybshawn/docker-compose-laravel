@@ -2,6 +2,8 @@ version: '3'
 
 networks:
   laravel:
+    driver: bridge
+    external: false
   traefik:
     external: true
 
