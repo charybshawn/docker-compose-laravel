@@ -12,16 +12,20 @@ services:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
     container_name: nginx
-    ports:
-      - 80:80
+    labels:
+        - traefik.http.routers.webserver.rule=Host(`${DOMAIN}`)
+        - traefik.http.routers.webserver.tls=true
+        - traefik.http.routers.webserver.tls.certresolver=lets-encrypt
+        - traefik.port=80
     volumes:
       - ./src:/var/www/html:delegated
     depends_on:
       - php
-      - redis
+      #- redis
       - mysql
-      - mailhog
+      #- mailhog
     networks:
+      - traefik
       - laravel
 
   mysql:
