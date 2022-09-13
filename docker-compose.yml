@@ -6,6 +6,11 @@ networks:
   traefik:
     external: true
 
+#Volumes
+volumes:
+  dbdata:
+    driver: local
+
 services:
   site:
     build:
@@ -23,6 +28,7 @@ services:
         - traefik.docker.network=traefik
     volumes:
       - ./src:/var/www/html:delegated
+      - dbdata:/var/lib/mysql/
     depends_on:
       - php
       #- redis
@@ -40,10 +46,10 @@ services:
     ports:
       - 3306:3306
     environment:
+      MYSQL_ROOT_PASSWORD: hmo671FSD!
       MYSQL_DATABASE: sfbackend
       MYSQL_USER: thor
-      MYSQL_PASSWORD: hmo671FSD
-      MYSQL_ROOT_PASSWORD: tharJOH61!
+      MYSQL_PASSWORD: kngfqp57
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     networks:
