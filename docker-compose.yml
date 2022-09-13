@@ -28,7 +28,7 @@ services:
         - traefik.docker.network=traefik
     volumes:
       - ./src:/var/www/html:delegated
-      - dbdata:/var/lib/mysql/
+      
     depends_on:
       - php
       #- redis
@@ -54,6 +54,8 @@ services:
       SERVICE_NAME: mysql
     networks:
       - laravel
+    volumes:
+    - dbdata:/var/lib/mysql/
 
   php:
     build:
