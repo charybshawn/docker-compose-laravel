@@ -38,24 +38,24 @@ services:
       - traefik
       - laravel
 
-  mysql:
-    image: mariadb:10.6
-    container_name: mysql
+  db:
+    image: mysql:8.0
+    container_name: db
     restart: unless-stopped
     tty: true
     ports:
-      - 3306:3306
+      - "3306:3306"
     environment:
+      MYSQL_ROOT_PASSWORD: hmo671FSD!
       MYSQL_DATABASE: sfbackend
       MYSQL_USER: thor
-      MYSQL_PASSWORD: hmo671FSD
-      MYSQL_ROOT_PASSWORD: tharJOH61!
+      MYSQL_PASSWORD: kngfqp57
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
-    networks:
-      - laravel
     volumes:
-    - dbdata:/var/lib/mysql/
+      - dbdata:/var/lib/mysql/
+    networks:
+      - app-network
 
   php:
     build:
