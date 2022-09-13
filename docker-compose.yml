@@ -5,7 +5,7 @@ networks:
     external: false
   traefik:
     external: true
-
+    
 #Volumes
 volumes:
   dbdata:
@@ -46,10 +46,10 @@ services:
     ports:
       - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: hmo671FSD!
       MYSQL_DATABASE: sfbackend
       MYSQL_USER: thor
-      MYSQL_PASSWORD: kngfqp57
+      MYSQL_PASSWORD: hmo671FSD
+      MYSQL_ROOT_PASSWORD: tharJOH61!
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     networks:
