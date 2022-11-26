@@ -21,11 +21,12 @@ services:
         - GID=${GID:-1000}
     container_name: nginx
     labels:
-        - traefik.http.routers.webserver.rule=Host(`${DOMAIN}`)
-        - traefik.http.routers.webserver.tls=true
-        - traefik.http.routers.webserver.tls.certresolver=lets-encrypt
-        - traefik.port=80
-        - traefik.docker.network=external
+      - "traefik.enabled=true"
+      - "traefik.http.routers.webserver.rule=Host(`${DOMAIN}`)"
+      - "traefik.http.routers.webserver.tls=true"
+      - "traefik.http.routers.webserver.tls.certresolver=lets-encrypt"
+      - "traefik.port=80"
+      - "traefik.docker.network=external"
     volumes:
       - ./src:/var/www/html:delegated
       
