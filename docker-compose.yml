@@ -55,7 +55,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql/
     networks:
-      - laravel
+      - internal
 
   php:
     build:
