@@ -1,9 +1,9 @@
 version: '3'
 
 networks:
-  laravel:
+  internal:
     external: false
-  traefik:
+  external:
     external: true
     
 #Volumes
@@ -35,8 +35,8 @@ services:
       - db
       #- mailhog
     networks:
-      - traefik
-      - laravel
+      - external
+      - internal
 
   db:
     image: mysql:8.0
@@ -68,7 +68,7 @@ services:
     volumes:
       - ./src:/var/www/html:delegated
     networks:
-      - laravel
+      - internal
 
   # redis:
   #   image: redis:alpine
@@ -95,7 +95,7 @@ services:
     user: laravel
     entrypoint: ['composer', '--ignore-platform-reqs']
     networks:
-      - laravel
+      - internal
 
   npm:
     image: node:15.3
@@ -108,7 +108,7 @@ services:
     working_dir: /var/www/html
     entrypoint: ['npm']
     networks:
-      - laravel
+      - internal
 
   artisan:
     build:
@@ -125,7 +125,7 @@ services:
     working_dir: /var/www/html
     entrypoint: ['php', '/var/www/html/artisan']
     networks:
-      - laravel
+      - internal
 
   mailhog:
     image: mailhog/mailhog:latest
@@ -134,4 +134,4 @@ services:
       - 1025:1025
       - 8025:8025
     networks:
-      - laravel
+      - internal
