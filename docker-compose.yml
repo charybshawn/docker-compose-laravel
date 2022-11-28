@@ -34,7 +34,7 @@ services:
       - php
       #- redis
       - db
-      #- vite
+      - vite
       #- mailhog
     networks:
       - external
@@ -132,9 +132,9 @@ services:
     volumes:
       - ./src:/var/www/html
     ports:
-      - 5173:5173
+      - "5173:5173"
     working_dir: /var/www/html
-    entrypoint: ['npx']
+    entrypoint: ['npm', 'run', 'dev']
     networks:
       - internal
 
