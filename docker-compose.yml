@@ -34,6 +34,7 @@ services:
       - php
       #- redis
       - db
+      #- vite
       #- mailhog
     networks:
       - external
@@ -124,6 +125,19 @@ services:
     entrypoint: ['npx']
     networks:
       - internal
+
+  vite:
+    image: node:19.1.0
+    container_name: vite
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - 5173:5173
+    working_dir: /var/www/html
+    entrypoint: ['npx']
+    networks:
+      - internal
+
 
   artisan:
     build:
