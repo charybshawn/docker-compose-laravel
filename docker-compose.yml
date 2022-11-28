@@ -99,7 +99,7 @@ services:
       - internal
 
   npm:
-    image: node:15.3
+    image: node:19.1.0
     container_name: npm
     volumes:
       - ./src:/var/www/html
@@ -112,7 +112,7 @@ services:
       - internal
   
   npx:
-    image: node:15.3
+    image: node:19.1.0
     container_name: npx
     volumes:
       - ./src:/var/www/html
