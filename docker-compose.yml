@@ -21,7 +21,7 @@ services:
         - GID=${GID:-1000}
     container_name: nginx
     labels:
-      - "traefik.enabled=true"
+      - "traefik.enable=true"
       - "traefik.http.routers.webserver.rule=Host(`${DOMAIN}`)"
       - "traefik.http.routers.webserver.tls=true"
       - "traefik.http.routers.webserver.tls.certresolver=lets-encrypt"
