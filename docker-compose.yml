@@ -34,7 +34,7 @@ services:
       - php
       #- redis
       - db
-      #- vite
+      - vite
       #- mailhog
     networks:
       - external
