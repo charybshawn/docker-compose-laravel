@@ -25,7 +25,7 @@ services:
       - "traefik.http.routers.webserver.rule=Host(`${DOMAIN}`)"
       - "traefik.http.routers.webserver.tls=true"
       - "traefik.http.routers.webserver.tls.certresolver=lets-encrypt"
-      - "traefik.http.routers.dashboard.entrypoints=websecure"
+      - "traefik.http.routers.webserver.entrypoints=websecure"
 
     volumes:
       - ./src:/var/www/html:delegated
