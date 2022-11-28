@@ -25,8 +25,8 @@ services:
       - "traefik.http.routers.webserver.rule=Host(`${DOMAIN}`)"
       - "traefik.http.routers.webserver.tls=true"
       - "traefik.http.routers.webserver.tls.certresolver=lets-encrypt"
-      - "traefik.port=80"
-      - "traefik.docker.network=external"
+      - "traefik.http.routers.dashboard.entrypoints=websecure"
+
     volumes:
       - ./src:/var/www/html:delegated
       
