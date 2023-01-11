@@ -19,7 +19,6 @@ services:
       args:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
-    container_name: nginx
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.webserver.rule=Host(`${DOMAIN}`)"
@@ -42,7 +41,6 @@ services:
 
   db:
     image: mysql:8.0
-    container_name: db
     restart: unless-stopped
     tty: true
     ports:
@@ -66,7 +64,6 @@ services:
       args:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
-    container_name: php
     volumes:
       - ./src:/var/www/html:delegated
     networks:
@@ -158,7 +155,6 @@ services:
 
   mailhog:
     image: mailhog/mailhog:latest
-    container_name: mailhog
     ports:
       - 1025:1025
       - 8025:8025
